@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nots_app/views/nots_view.dart';
 
 void main() {
-  print('inside main ===============================');
   runApp(const NotsAppFirst());
 }
 
@@ -12,6 +11,7 @@ class NotsAppFirst extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
       ),

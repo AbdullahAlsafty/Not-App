@@ -5,6 +5,7 @@ class NotsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('inside nots view  ===============================');
     return const Scaffold();
   }
 }

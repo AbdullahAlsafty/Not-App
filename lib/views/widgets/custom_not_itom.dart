@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nots_app/views/edit_nots_view.dart';
 
 class CustomNotItem extends StatelessWidget {
   const CustomNotItem({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 24, bottom: 24, left: 24, right: 16),
-      decoration: _getBoxDecoration(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [_getListTile(), _getTextDate()],
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => EditNotsView(),
+          ),
+        );
+      },
+      child: Container(
+        padding:
+            const EdgeInsets.only(top: 24, bottom: 24, left: 24, right: 16),
+        decoration: _getBoxDecoration(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [_getListTile(), _getTextDate()],
+        ),
       ),
     );
   }

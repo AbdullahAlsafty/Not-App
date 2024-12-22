@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'widgets/custom_notsview_body.dart';
+import 'widgets/showdialog_add_not.dart';
 
 class NotsView extends StatelessWidget {
   const NotsView({super.key});
@@ -11,7 +12,6 @@ class NotsView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-              backgroundColor: Colors.red,
               context: context,
               builder: (context) {
                 return ShowDialogAddNot();
@@ -21,14 +21,5 @@ class NotsView extends StatelessWidget {
       ),
       body: const CustomNotsViewBody(),
     );
-  }
-}
-
-class ShowDialogAddNot extends StatelessWidget {
-  const ShowDialogAddNot({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

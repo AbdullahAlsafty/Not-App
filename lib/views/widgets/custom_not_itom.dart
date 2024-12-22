@@ -62,9 +62,9 @@ class CustomNotItem extends StatelessWidget {
             ),
           ),
         ),
-        trailing: IconButton(
-          onPressed: () {},
-          icon: Icon(
+        trailing: InkWell(
+          onTap: () {},
+          child: Icon(
             FontAwesomeIcons.trash,
             color: Colors.black,
             size: 24,

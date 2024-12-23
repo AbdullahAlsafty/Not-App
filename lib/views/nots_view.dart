@@ -14,7 +14,10 @@ class NotsView extends StatelessWidget {
           showModalBottomSheet(
               context: context,
               builder: (context) {
-                return ShowDialogAddNot();
+                return Container(
+                  child: const ShowDialogAddNot(),
+                  color: Colors.green,
+                );
               });
         },
         child: const Icon(Icons.add),

@@ -1,33 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nots_app/views/widgets/custom_text_filed.dart';
+import 'package:nots_app/views/widgets/custom_text_form_filed.dart';
 
 import 'custom_appbar_widget.dart';
 
-class EditNotsViewBody extends StatelessWidget {
+class EditNotsViewBody extends StatefulWidget {
   const EditNotsViewBody({super.key});
 
   @override
+  State<EditNotsViewBody> createState() => _EditNotsViewBodyState();
+}
+
+class _EditNotsViewBodyState extends State<EditNotsViewBody> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+  @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        children: [
-          SizedBox(height: 20),
-          CustmAppBArWidget(
-            title: 'Edit Nots',
-            icon: FontAwesomeIcons.check,
-          ),
-          SizedBox(height: 50),
-          CustomTextFiled(
-            hint: 'edit title',
-          ),
-          SizedBox(height: 20),
-          CustomTextFiled(
-            hint: 'edit description',
-            maxlins: 5,
-          ),
-        ],
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            CustmAppBArWidget(
+              title: 'Edit Nots',
+              icon: FontAwesomeIcons.check,
+            ),
+            SizedBox(height: 50),
+            CustomTextFormFiled(
+              autovalidateMode: autovalidateMode,
+              hint: 'edit title',
+            ),
+            SizedBox(height: 20),
+            CustomTextFormFiled(
+              autovalidateMode: autovalidateMode,
+              hint: 'edit description',
+              maxlins: 5,
+            ),
+            SizedBox(height: 50),
+            ElevatedButton(
+                onPressed: () {
+                  // if (formKey.currentState!.validate()) {
+                  //   autovalidateMode = AutovalidateMode.always;
+                  //   setState(() {
+                  //     formKey.currentState!.save();
+                  //   });
+                  // }
+                },
+                child: Text('auto validate == always ')),
+            SizedBox(height: 50),
+            ElevatedButton(
+                onPressed: () {
+                  // if (formKey.currentState!.validate()) {
+                  //   autovalidateMode = AutovalidateMode.disabled;
+                  //   setState(() {
+                  //     formKey.currentState!.save();
+                  //   }
+
+                  //   );
+                  // }
+                },
+                child: Text('auto validat == disabled '))
+          ],
+        ),
       ),
     );
   }

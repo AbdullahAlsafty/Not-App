@@ -14,10 +14,9 @@ class AddNotForm extends StatefulWidget {
 
 class _AddNotFormState extends State<AddNotForm> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
     String? title;
     String? subtitle;
     return Form(

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nots_app/cubits/read_cubit/read_not_cubit.dart';
+import 'package:nots_app/models/not_model.dart';
 import 'package:nots_app/views/edit_nots_view.dart';
 
 class CustomNotItem extends StatelessWidget {
-  const CustomNotItem({super.key});
+  const CustomNotItem({super.key, required this.not});
+  final NotModel not;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +27,7 @@ class CustomNotItem extends StatelessWidget {
         decoration: _getBoxDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: [_getListTile(), _getTextDate()],
+          children: [_getListTile(context), _getTextDate()],
         ),
       ),
     );
@@ -33,7 +37,7 @@ class CustomNotItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Text(
-        'th date is 12/12/2024',
+        not.date,
         style: TextStyle(
           color: Colors.black.withOpacity(.4),
           fontSize: 16,
@@ -42,11 +46,11 @@ class CustomNotItem extends StatelessWidget {
     );
   }
 
-  ListTile _getListTile() {
+  ListTile _getListTile(BuildContext context) {
     return ListTile(
         contentPadding: const EdgeInsets.symmetric(horizontal: 0),
         title: Text(
-          'tiite',
+          not.title,
           style: TextStyle(
             fontSize: 26,
             color: Colors.black,
@@ -55,7 +59,7 @@ class CustomNotItem extends StatelessWidget {
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 16, bottom: 16),
           child: Text(
-            'subtiite jdfklgj lkjdflgkj fldgj',
+            not.subtitle,
             style: TextStyle(
               fontSize: 18,
               color: Colors.black.withOpacity(.5),
@@ -63,7 +67,10 @@ class CustomNotItem extends StatelessWidget {
           ),
         ),
         trailing: InkWell(
-          onTap: () {},
+          onTap: () {
+            not.delete();
+            BlocProvider.of<ReadNotCubit>(context).feachdata();
+          },
           child: Icon(
             FontAwesomeIcons.trash,
             color: Colors.black,
@@ -73,7 +80,7 @@ class CustomNotItem extends StatelessWidget {
   }
 
   BoxDecoration _getBoxDecoration() => BoxDecoration(
-        color: Colors.green,
+        color: Color(not.color),
         borderRadius: BorderRadius.circular(16),
       );
 }

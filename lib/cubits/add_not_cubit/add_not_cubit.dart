@@ -6,12 +6,15 @@ import 'package:nots_app/models/not_model.dart';
 
 class AddNotCubit extends Cubit<AddNotState> {
   AddNotCubit() : super(AddNotinitial());
-  addNotModel(NotModel not) async {
+
+  void addNotModel(NotModel not) async {
     emit(AddNotLoaded());
+    await Future.delayed(Duration(seconds: 1));
+
     try {
       Box<NotModel> notBox = Hive.box<NotModel>(knotsBox);
-      emit(AddNotSuccess());
       await notBox.add(not);
+      emit(AddNotSuccess());
     } catch (e) {
       emit(AddNotFailure(e.toString()));
     }

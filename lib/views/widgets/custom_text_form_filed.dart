@@ -6,6 +6,7 @@ class CustomTextFormFiled extends StatelessWidget {
   const CustomTextFormFiled({
     super.key,
     required this.hint,
+    required this.focusNode,
     this.maxlins = 1,
     this.onSaved,
     this.autovalidateMode,
@@ -17,12 +18,23 @@ class CustomTextFormFiled extends StatelessWidget {
   final int maxlins;
   final AutovalidateMode? autovalidateMode;
 
+  final FocusNode focusNode;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: focusNode,
       autovalidateMode: autovalidateMode,
       //  autovalidateMode: onSaved==null?AutovalidateMode.disabled:autovalidateMode,
       onSaved: onSaved,
+      onTap: () {
+        debugPrint('TextField tapped');
+        FocusScope.of(context).requestFocus(focusNode);
+
+        if (!focusNode.hasFocus) {
+          focusNode.requestFocus();
+        }
+      },
       validator: (value) {
         if (value?.isEmpty ?? true) {
           return 'this field is required';

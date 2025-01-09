@@ -32,37 +32,15 @@ class _EditNotsViewBodyState extends State<EditNotsViewBody> {
             CustomTextFormFiled(
               autovalidateMode: autovalidateMode,
               hint: 'edit title',
+              focusNode: FocusNode(),
             ),
             SizedBox(height: 20),
             CustomTextFormFiled(
               autovalidateMode: autovalidateMode,
               hint: 'edit description',
               maxlins: 5,
+              focusNode: FocusNode(),
             ),
-            SizedBox(height: 50),
-            ElevatedButton(
-                onPressed: () {
-                  // if (formKey.currentState!.validate()) {
-                  //   autovalidateMode = AutovalidateMode.always;
-                  //   setState(() {
-                  //     formKey.currentState!.save();
-                  //   });
-                  // }
-                },
-                child: Text('auto validate == always ')),
-            SizedBox(height: 50),
-            ElevatedButton(
-                onPressed: () {
-                  // if (formKey.currentState!.validate()) {
-                  //   autovalidateMode = AutovalidateMode.disabled;
-                  //   setState(() {
-                  //     formKey.currentState!.save();
-                  //   }
-
-                  //   );
-                  // }
-                },
-                child: Text('auto validat == disabled '))
           ],
         ),
       ),

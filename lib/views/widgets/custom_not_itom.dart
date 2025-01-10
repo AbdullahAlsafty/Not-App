@@ -17,7 +17,7 @@ class CustomNotItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => EditNotsView(),
+            builder: (context) => EditNotsView(notModel: not),
           ),
         );
       },
@@ -71,10 +71,13 @@ class CustomNotItem extends StatelessWidget {
             not.delete();
             BlocProvider.of<ReadNotCubit>(context).feachdata();
           },
-          child: Icon(
-            FontAwesomeIcons.trash,
-            color: Colors.black,
-            size: 24,
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 900),
+            child: Icon(
+              FontAwesomeIcons.trash,
+              color: Colors.black,
+              size: 24,
+            ),
           ),
         ));
   }

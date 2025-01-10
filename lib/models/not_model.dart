@@ -7,8 +7,8 @@ class NotModel extends HiveObject {
       required this.date,
       required this.color});
 
-  final String title;
-  final String subtitle;
+  String title;
+  String subtitle;
   final String date;
   final int color;
 }

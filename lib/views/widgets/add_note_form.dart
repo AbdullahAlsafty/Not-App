@@ -5,6 +5,7 @@ import 'package:nots_app/cubits/add_not_cubit/add_not_cubit.dart';
 import 'package:nots_app/cubits/add_not_cubit/add_not_state.dart';
 import 'package:nots_app/cubits/read_cubit/read_not_cubit.dart';
 import 'package:nots_app/models/not_model.dart';
+import 'package:nots_app/views/widgets/color_item.dart';
 import 'package:nots_app/views/widgets/custom_add_buttom.dart';
 
 import 'custom_text_form_filed.dart';
@@ -49,6 +50,8 @@ class _AddNotFormState extends State<AddNotForm> {
               },
               focusNode: FocusNode(),
             ),
+            SizedBox(height: 32),
+            ColorsListView(),
             SizedBox(height: 32),
             BlocBuilder<AddNotCubit, AddNotState>(
               builder: (context, state) {

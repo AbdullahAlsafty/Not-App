@@ -22,8 +22,7 @@ class _ShowDialogAddNotState extends State<ShowDialogAddNot> {
       child: BlocConsumer<AddNotCubit, AddNotState>(listener: (context, state) {
         if (state is AddNotSuccess) {
           Navigator.pop(context);
-
-          //  BlocProvider.of<ReadNotCubit>(context).feachdata();
+          BlocProvider.of<ReadNotCubit>(context).feachdata();
         }
       }, builder: (context, state) {
         return AbsorbPointer(

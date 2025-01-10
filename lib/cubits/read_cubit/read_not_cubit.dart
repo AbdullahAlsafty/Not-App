@@ -10,5 +10,6 @@ class ReadNotCubit extends Cubit<ReadNotCubitState> {
 
   void feachdata() {
     nots = Hive.box<NotModel>(knotsBox).values.toList();
+    emit(ReadNotCubitsuccessState());
   }
 }

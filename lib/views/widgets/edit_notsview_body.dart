@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nots_app/cubits/add_not_cubit/add_not_cubit.dart';
 
 import 'package:nots_app/cubits/read_cubit/read_not_cubit.dart';
 import 'package:nots_app/helper/constants.dart';
@@ -22,6 +23,7 @@ class _EditNotsViewBodyState extends State<EditNotsViewBody> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subtitle;
   int? colorcode;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -37,7 +39,6 @@ class _EditNotsViewBodyState extends State<EditNotsViewBody> {
               ontap: () {
                 widget.notModel.title = title ?? widget.notModel.title;
                 widget.notModel.subtitle = subtitle ?? widget.notModel.subtitle;
-                // colorcode = BlocProvider.of<AddNotCubit>(context).colorcode;
                 widget.notModel.color = colorcode ?? widget.notModel.color;
                 widget.notModel.save();
                 BlocProvider.of<ReadNotCubit>(context).feachdata();
@@ -66,6 +67,9 @@ class _EditNotsViewBodyState extends State<EditNotsViewBody> {
                 height: 40 * 3,
                 child: ColorListViewEditNot(
                   notModel: widget.notModel,
+                  ontapcc: () {
+                    colorcode = BlocProvider.of<AddNotCubit>(context).colorcode;
+                  },
                 ))
           ],
         ),
@@ -75,8 +79,13 @@ class _EditNotsViewBodyState extends State<EditNotsViewBody> {
 }
 
 class ColorListViewEditNot extends StatefulWidget {
-  const ColorListViewEditNot({super.key, required this.notModel});
+  const ColorListViewEditNot({
+    super.key,
+    required this.notModel,
+    required this.ontapcc,
+  });
   final NotModel notModel;
+  final void Function() ontapcc;
 
   @override
   State<ColorListViewEditNot> createState() => _ColorListViewEditNotState();
@@ -84,9 +93,11 @@ class ColorListViewEditNot extends StatefulWidget {
 
 class _ColorListViewEditNotState extends State<ColorListViewEditNot> {
   late int curntIndex;
+
   @override
   void initState() {
     curntIndex = kColorList.indexOf(widget.notModel.color);
+
     super.initState();
   }
 
@@ -98,10 +109,11 @@ class _ColorListViewEditNotState extends State<ColorListViewEditNot> {
         itemBuilder: (context, index) {
           return ColorItem(
               ontap: () {
+                BlocProvider.of<AddNotCubit>(context).colorcode =
+                    kColorList[index];
+
                 curntIndex = index;
-
-                widget.notModel.color = kColorList[index];
-
+                widget.ontapcc();
                 setState(() {});
               },
               color: kColorList[index],

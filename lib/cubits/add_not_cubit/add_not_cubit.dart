@@ -7,6 +7,7 @@ import 'package:nots_app/models/not_model.dart';
 class AddNotCubit extends Cubit<AddNotState> {
   AddNotCubit() : super(AddNotinitial());
   int colorcode = 0xFF1E88E5;
+
   void addNotModel(NotModel not) async {
     emit(AddNotLoaded());
     await Future.delayed(Duration(seconds: 1));

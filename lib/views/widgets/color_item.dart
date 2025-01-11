@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nots_app/cubits/add_not_cubit/add_not_cubit.dart';
 import 'package:nots_app/helper/constants.dart';
 
 class ColorItem extends StatelessWidget {
@@ -20,7 +22,7 @@ class ColorItem extends StatelessWidget {
           decoration: BoxDecoration(
             color: Color(color),
             shape: BoxShape.circle,
-            border: isActive ? Border.all(color: Colors.white) : null,
+            border: isActive ? Border.all(color: Colors.white, width: 2) : null,
           ),
           duration: Duration(milliseconds: 500),
           child: isActive
@@ -42,26 +44,24 @@ class ColorsListView extends StatefulWidget {
 }
 
 class _ColorsListViewState extends State<ColorsListView> {
-  //int indexff = kColorList[0];
-  int indexff = 0xFF1E88E5;
+  int curntIndex = 0;
   @override
   Widget build(BuildContext context) {
-    print('**********&&&^^&^&^^*^*^&*^&*^&');
-
     return SizedBox(
       height: 40 * 3,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: kColorList.length,
           itemBuilder: (context, index) {
-            print('=========================== ${indexff == index}');
             return ColorItem(
               color: kColorList[index],
               ontap: () {
-                indexff = kColorList[index];
+                curntIndex = index;
+                BlocProvider.of<AddNotCubit>(context).colorcode =
+                    kColorList[index];
                 setState(() {});
               },
-              isActive: indexff == kColorList[index],
+              isActive: curntIndex == index,
             );
           }),
     );

@@ -38,17 +38,15 @@ class _AddNotFormState extends State<AddNotForm> {
               onSaved: (value) {
                 title = value;
               },
-              focusNode: FocusNode(),
             ),
             SizedBox(height: 16),
             CustomTextFormFiled(
               hint: 'description',
-              //  maxlins: 5,
+              maxlins: 5,
               autovalidateMode: autovalidateMode,
               onSaved: (value) {
                 subtitle = value;
               },
-              focusNode: FocusNode(),
             ),
             SizedBox(height: 32),
             ColorsListView(),
@@ -67,7 +65,8 @@ class _AddNotFormState extends State<AddNotForm> {
                           title: title!,
                           subtitle: subtitle!,
                           date: formtedDateTimeNow,
-                          color: Colors.blue.value);
+                          color:
+                              BlocProvider.of<AddNotCubit>(context).colorcode);
                       BlocProvider.of<AddNotCubit>(context)
                           .addNotModel(notModel);
                     } else {

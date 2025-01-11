@@ -6,7 +6,6 @@ class CustomTextFormFiled extends StatelessWidget {
   const CustomTextFormFiled({
     super.key,
     required this.hint,
-    required this.focusNode,
     this.maxlins = 1,
     this.onSaved,
     this.autovalidateMode,
@@ -21,13 +20,11 @@ class CustomTextFormFiled extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final void Function(String)? onChanged;
 
-  final FocusNode focusNode;
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: onChanged,
-      focusNode: focusNode,
+
       autovalidateMode: autovalidateMode,
       //  autovalidateMode: onSaved==null?AutovalidateMode.disabled:autovalidateMode,
       onSaved: onSaved,

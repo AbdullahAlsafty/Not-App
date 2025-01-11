@@ -17,25 +17,22 @@ class ShowDialogAddNot extends StatefulWidget {
 class _ShowDialogAddNotState extends State<ShowDialogAddNot> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddNotCubit(),
-      child: BlocConsumer<AddNotCubit, AddNotState>(listener: (context, state) {
-        if (state is AddNotSuccess) {
-          Navigator.pop(context);
-          BlocProvider.of<ReadNotCubit>(context).feachdata();
-        }
-      }, builder: (context, state) {
-        return AbsorbPointer(
-          absorbing: state is AddNotLoaded ? true : false,
-          child: Padding(
-            padding: EdgeInsets.only(
-                left: 12,
-                right: 12,
-                bottom: MediaQuery.of(context).viewInsets.bottom + 12),
-            child: AddNotForm(),
-          ),
-        );
-      }),
-    );
+    return BlocConsumer<AddNotCubit, AddNotState>(listener: (context, state) {
+      if (state is AddNotSuccess) {
+        Navigator.pop(context);
+        BlocProvider.of<ReadNotCubit>(context).feachdata();
+      }
+    }, builder: (context, state) {
+      return AbsorbPointer(
+        absorbing: state is AddNotLoaded ? true : false,
+        child: Padding(
+          padding: EdgeInsets.only(
+              left: 12,
+              right: 12,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 12),
+          child: AddNotForm(),
+        ),
+      );
+    });
   }
 }

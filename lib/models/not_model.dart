@@ -10,5 +10,5 @@ class NotModel extends HiveObject {
   String title;
   String subtitle;
   final String date;
-  final int color;
+  int color;
 }

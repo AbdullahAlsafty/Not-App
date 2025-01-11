@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
 import 'package:nots_app/cubits/add_not_cubit/add_not_cubit.dart';
 import 'package:nots_app/cubits/add_not_cubit/add_not_state.dart';
 import 'package:nots_app/cubits/read_cubit/read_not_cubit.dart';

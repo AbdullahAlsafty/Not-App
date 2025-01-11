@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+
 import 'package:nots_app/cubits/read_cubit/read_not_cubit.dart';
 import 'package:nots_app/cubits/read_cubit/read_not_cubit_state.dart';
-import 'package:nots_app/helper/constants.dart';
+
 import 'package:nots_app/models/not_model.dart';
 
 import 'custom_not_itom.dart';

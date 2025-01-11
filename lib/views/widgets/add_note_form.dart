@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:nots_app/cubits/add_not_cubit/add_not_cubit.dart';
 import 'package:nots_app/cubits/add_not_cubit/add_not_state.dart';
-import 'package:nots_app/cubits/read_cubit/read_not_cubit.dart';
+
 import 'package:nots_app/models/not_model.dart';
 import 'package:nots_app/views/widgets/color_item.dart';
 import 'package:nots_app/views/widgets/custom_add_buttom.dart';

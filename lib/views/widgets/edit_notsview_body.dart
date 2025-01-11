@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nots_app/cubits/add_not_cubit/add_not_cubit.dart';
+
 import 'package:nots_app/cubits/read_cubit/read_not_cubit.dart';
 import 'package:nots_app/helper/constants.dart';
 import 'package:nots_app/models/not_model.dart';
@@ -86,7 +86,6 @@ class _ColorListViewEditNotState extends State<ColorListViewEditNot> {
   late int curntIndex;
   @override
   void initState() {
-    // TODO: implement initState
     curntIndex = kColorList.indexOf(widget.notModel.color);
     super.initState();
   }

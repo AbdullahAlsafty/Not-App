@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:nots_app/helper/constants.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
@@ -10,11 +10,9 @@ class CustomTextFormFiled extends StatelessWidget {
     this.onSaved,
     this.autovalidateMode,
     this.onChanged,
-
-    // this.validator,
   });
   final void Function(String?)? onSaved;
-  // final String   Function(String?)? validator;
+
   final String hint;
   final int maxlins;
   final AutovalidateMode? autovalidateMode;
@@ -24,17 +22,15 @@ class CustomTextFormFiled extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: onChanged,
-
       autovalidateMode: autovalidateMode,
-      //  autovalidateMode: onSaved==null?AutovalidateMode.disabled:autovalidateMode,
       onSaved: onSaved,
-
       validator: (value) {
         if (value?.isEmpty ?? true) {
           return 'this field is required';
+        } else {
+          return null;
         }
       },
-
       maxLines: maxlins,
       cursorColor: kPrimaryColor,
       decoration: InputDecoration(
